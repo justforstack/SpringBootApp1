@@ -22,13 +22,11 @@ import lombok.Data;
 @Entity
 @Table(name="newusers")
 public class User {
-	
-
 	@Id
-	@Column(name="uid")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="uid")
   private Integer uid;
-	@Column(name="uname")
+	@Column(name="name")
   private String name;
 
 
@@ -37,16 +35,9 @@ public class User {
 	@Column(name="pwd")
   private String pwd;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name="rolestab",//table name
 	joinColumns=@JoinColumn(name="uid")) //join column or key column
 	@Column(name="role")//element column
-  private List<String> roles;
-
-	
-
-	
-	
-
-	
+  private List<String> roles;	
 }

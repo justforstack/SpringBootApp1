@@ -13,6 +13,7 @@ import com.web.data.impl.IUserService;
 import com.web.data.model.User;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private IUserService service;
@@ -30,6 +31,14 @@ public class UserController {
 		return "UserRegister";
 		
 	}
+	@GetMapping("/login")
+	public String showLoginPage() {
+		return "Login";
+	}
+//	@GetMapping("/home")
+//	public String showHome() {
+//		return "Welcome";
+//	}
 	
 }
 //1)show register page
