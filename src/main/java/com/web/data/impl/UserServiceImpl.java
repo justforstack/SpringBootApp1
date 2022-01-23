@@ -28,9 +28,13 @@ public class UserServiceImpl implements IUserService,UserDetailsService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	@Override
+	
+	
+    @Override
 	public Integer saveUser(User user) {
 		// TODO Auto-generated method stub
+    	
+    	
 		//read Form Password, encode it
 				String encPwd = passwordEncoder.encode(user.getPwd());
 				//set back to same object
@@ -38,7 +42,13 @@ public class UserServiceImpl implements IUserService,UserDetailsService {
 		user=repo.save(user);
 		return user.getUid();
 	}
+	@Override
+    public boolean exists(String email){
+    	System.out.println("User mail exists already");
+        return repo.existsByEmail(email);
+     }
 	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
@@ -50,6 +60,7 @@ public class UserServiceImpl implements IUserService,UserDetailsService {
 		} else { //if user is present
 			System.out.println("User is present");
 			User user = opt.get();
+			
 			//User Roles
 			List<String> roles = user.getRoles();
 			

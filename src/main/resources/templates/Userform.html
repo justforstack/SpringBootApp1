@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:text="${message}">[[{message}]]</div>
+<div th:if="${param.error}" class="card-footer bg-danger text-white">
+				User already registered.		
+			</div>
+</body>
+</html>

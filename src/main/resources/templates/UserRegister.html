@@ -5,7 +5,7 @@
 <title>Register Page</title>
 </head>
 <body>
-<form action="save" method="POST">
+<form action="/user/save" method="POST">
 Name    :<input type="text" name="name"/>
 Email   :<input type="text" name="email"/>
 Password:<input type="password" name="pwd"/>
@@ -15,8 +15,13 @@ Roles   :<input type="checkbox" name="roles" value="ADMIN"/>ADMIN
 
 </form>
 
-<div th:text="${message}">
+			<div th:if="${message!=null}" class="card-footer bg-info text-white">
+				<div th:text="${message}"></div>
+			
+			</div>
+<div th:if="${param.error}" class="card-footer bg-danger text-white">
+				User already registered.		
+			</div>
 
-</div>
 </body>
 </html>
